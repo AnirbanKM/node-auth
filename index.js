@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const cookieParser = require('cookie-parser')
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ app.listen(PORT, function () {
 });
 
 app.use(express.json());
+app.use(cookieParser());
 
 // connect to mongoDB
 mongoose.connect(process.env.MDB_CONNECT, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -24,3 +26,4 @@ app.get("/", function (req, res) {
 });
 
 app.use("/auth", require("./routers/userRouter"));
+app.use("/customer", require("./routers/customerRouter"));
