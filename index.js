@@ -19,4 +19,8 @@ mongoose.connect(process.env.MDB_CONNECT, { useNewUrlParser: true, useUnifiedTop
     .then(() => console.log('Connected!'));
 
 // set up routes
+app.get("/", function (req, res) {
+    res.send("Hello, world!");
+});
+
 app.use("/auth", require("./routers/userRouter"));
