@@ -17,7 +17,7 @@ app.listen(PORT, function () {
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin: ["https://benevolent-paletas-558b8d.netlify.app/"],
+    origin: ["http://localhost:3000", "https://benevolent-paletas-558b8d.netlify.app"],
     credentials: true
 }));
 

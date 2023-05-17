@@ -52,7 +52,9 @@ router.post("/", async (req, res) => {
 
         // send the token in HTTP-only cookie
         res.cookie("token", token, {
-            httpOnly: true
+            httpOnly: true,
+            secure: true,
+            sameSite: "none"
         }).status(201).json({ "msg": "user token created successfully" });
 
     } catch (err) {
@@ -88,7 +90,9 @@ router.post("/login", async (req, res) => {
 
         // send the token in HTTP-only cookie
         res.cookie("token", token, {
-            httpOnly: true
+            httpOnly: true,
+            secure: true,
+            sameSite: "none"
         }).status(201).json({ "msg": "user token created successfully." });
 
     } catch (err) {
@@ -101,7 +105,9 @@ router.post("/login", async (req, res) => {
 router.get("/logout", (req, res) => {
     res.cookie("token", "", {
         httpOnly: true,
-        expires: new Date(0)
+        expires: new Date(0),
+        secure: true,
+        sameSite: "none"
     }).status(200).json({ "msg": "user token removed successfully." });
 });
 
